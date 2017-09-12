@@ -17,7 +17,7 @@ hog <- function(image, block, cell, stride, histsize, returntype = "numeric"){
   );
   image_matrix <- rbind(
     image_matrix,
-    rep(0, nrow(image_matrix))
+    rep(0, ncol(image_matrix))
   );
   
   ##  x-gradient
@@ -31,6 +31,7 @@ hog <- function(image, block, cell, stride, histsize, returntype = "numeric"){
   u <- c(nrow(image_matrix)-1,nrow(image_matrix));  ##  up side
   y_grad <- image_matrix[-u,] - image_matrix[-d,];
   y_grad <- y_grad[,-c(1,ncol(y_grad))];
+  y_grad <- y_grad + 0.5
   
   ##  angle xy-gradient
   grad_angle <- atan(y_grad/x_grad);
