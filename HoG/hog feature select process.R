@@ -43,14 +43,5 @@ for( j in seq(length(img_index)) ){
 feat <- do.call("rbind", feat);
 saveRDS(feat, "test");
 
-df <- lapply(index, readRDS);
-df <- lapply(df, as.data.frame);
-df <- lapply(seq(length(index)), function(i){
-  df[[i]]$y <- index[i];
-  return(df[[i]])
-})
-df   <- do.call("rbind", df);
-df$y <- as.factor(df$y);
-saveRDS(df,"train")
 
 
